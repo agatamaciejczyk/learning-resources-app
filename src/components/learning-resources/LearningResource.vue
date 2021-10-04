@@ -1,31 +1,48 @@
 <template>
   <li>
-      <base-card>
-          <header>
-              <h3>{{ title }}</h3>
-              <base-button mode="flat" @click="removeResource(id)">Delete</base-button>
-          </header>
+    <base-card>
+      <header>
+        <h3>{{ title }}</h3>
+        <base-button
+          mode="flat"
+          @click="removeResource(id)"
+        >
+          Delete
+        </base-button>
+      </header>
       <p>{{ description }}</p>
       <nav>
-          <a :href="link">View resource</a>
+        <a :href="link">View resource</a>
       </nav>
-      </base-card>
+    </base-card>
   </li>
 </template>
 
 <script>
-import BaseCard from "../UI/BaseCard.vue"
+import BaseCard from '../UI/BaseCard.vue';
 
 export default {
-   inject: ['removeResource'],
   components: { BaseCard },
-    props: [
-        'id',
-        'title',
-        'description',
-        'link'
-    ]
-}
+  inject: ['removeResource'],
+  props: {
+    id: {
+      type: String,
+      required: true,
+    },
+    title: {
+      type: String,
+      required: true,
+    },
+    description: {
+      type: String,
+      required: true,
+    },
+    link: {
+      type: String,
+      required: true,
+    },
+  },
+};
 </script>
 
 <style scoped>
